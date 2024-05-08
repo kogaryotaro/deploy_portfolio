@@ -202,7 +202,6 @@ $stmt = $pdo->query("select * from events where delete_flag = 0 order by date de
     <div class="wrapper">
       <div class="main-image">
         <div><img src="./images/main-view1.jpg"></div>
-        <div><img src="./images/main-view2.jpg"></div>
         <div><img src="./images/main-view3.jpg"></div>
         <div><img src="./images/main-view4.jpg"></div>
       </div>

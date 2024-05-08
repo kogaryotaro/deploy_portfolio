@@ -3,7 +3,7 @@ mb_internal_encoding("utf8");
 session_start();
 $login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
 
-$pdo = new PDO("mysql:dbname=portfolio;host=localhost;", "root", "");
+$pdo = new PDO("mysql:dbname=kogaport_portfolio;host=mysql1.php.starfree.ne.jp;", "kogaport_root", "ryo19990617");
 
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 

@@ -6,7 +6,7 @@ $login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
 if ($login === 1) {
     try {
         // ここで接続エラーが発生する可能性がある。
-        $pdo = new PDO("mysql:dbname=portfolio;host=localhost;", "root", "");
+        $pdo = new PDO("mysql:dbname=kogaport_portfolio;host=mysql1.php.starfree.ne.jp;", "kogaport_root", "ryo19990617");
     } catch (PDOException $e) {
         // 接続エラーが発生した場合の処理
         echo
@@ -88,9 +88,9 @@ if ($login === 1) {
             <li><a href="index.php?clear_session=true">イベント一覧</a></li>
             <?php if ($login === 1) :  //幹事が操作できる  
             ?>
-            <li><a href="actor.php?clear_session=true">参加者登録</a></li>
-            <li><a href="event.php?clear_session=true">イベント登録</a></li>
-            <li><a href="list.php?clear_session=true">参加者一覧</a></li>
+                <li><a href="actor.php?clear_session=true">参加者登録</a></li>
+                <li><a href="event.php?clear_session=true">イベント登録</a></li>
+                <li><a href="list.php?clear_session=true">参加者一覧</a></li>
             <?php endif; ?>
         </ul>
     </header>

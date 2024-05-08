@@ -6,7 +6,7 @@ $login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   try {
     // ここで接続エラーが発生する可能性がある。
-    $pdo = new PDO("mysql:dbname=portfolio;host=localhost;", "root", "");
+    $pdo = new PDO("mysql:dbname=kogaport_portfolio;host=mysql1.php.starfree.ne.jp;", "kogaport_root", "ryo19990617");
   } catch (PDOException $e) {
     // 接続エラーが発生した場合の処理
     echo
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                   <head>
                   <meta charset=\"utf-8\">
                   <title>イベント削除画面</title>
-                  <link rel=\"stylesheet\" type=\"text/css\" href=\"style2.css\">
+                  <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.accessError.css\">
                   </head>
                   <body>
       
