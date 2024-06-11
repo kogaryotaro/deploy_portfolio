@@ -109,86 +109,110 @@ if ($login === 1) {
 <html lang="ja">
 
 <head>
-  <meta charset="utf-8">
-  <title>参加者登録画面</title>
-  <link rel="stylesheet" type="text/css" href="./css/style.entry.css">
+    <meta charset="utf-8">
+    <title>参加者登録画面</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.entry.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('.menu-icon').click(function() {
+            $(this).toggleClass('open');
+            $('.menu').toggleClass('open');
+        });
+    });
+    </script>
 </head>
 
 <body>
-  <header>
-    <a href="index.php?clear_session=true"><img src="./images/logo.jpeg" alt="logo-mark"></a>
-    <ul class="menu">
-      <li><a href="index.php?clear_session=true">イベント一覧</a></li>
-      <?php if ($login === 1) :  //幹事が操作できる  
+    <header>
+        <a href="index.php?clear_session=true"><img src="./images/logo.jpeg" alt="logo-mark"></a>
+        <div class="menu-icon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <ul class="menu">
+            <li><a href="index.php?clear_session=true">イベント一覧</a></li>
+            <?php if ($login === 1) :  //幹事が操作できる  
       ?>
-        <li><a href="actor.php?clear_session=true">参加者登録</a></li>
-        <li><a href="event.php?clear_session=true">イベント登録</a></li>
-        <li><a href="list.php?clear_session=true">参加者一覧</a></li>
-      <?php endif; ?>
-    </ul>
-  </header>
+            <li><a href="actor.php?clear_session=true">参加者登録</a></li>
+            <li><a href="event.php?clear_session=true">イベント登録</a></li>
+            <li><a href="list.php?clear_session=true">参加者一覧</a></li>
+            <?php endif; ?>
+        </ul>
+    </header>
 
-  <main>
+    <main>
 
-    <h1>参加者登録画面</h1>
-    <form method="post" action="actor.php">
+        <h1>参加者登録画面</h1>
+        <form method="post" action="actor.php">
 
-      <div>
-        <label>名前(姓)　　</label>
-        <input type="text" class="text" size="35" name="family_name" value="<?php echo (!empty($_SESSION['family_name'])) ? $_SESSION['family_name'] : ''; ?>">
+            <div>
+                <label>名前(姓)　　</label>
+                <input type="text" class="text" size="35" name="family_name"
+                    value="<?php echo (!empty($_SESSION['family_name'])) ? $_SESSION['family_name'] : ''; ?>">
 
-        <?php if (!empty($errors['family_name'])) : ?>
-          <p class='error-message'><?php echo $errors['family_name']; ?></p>
-        <?php endif; ?>
-      </div>
+                <?php if (!empty($errors['family_name'])) : ?>
+                <p class='error-message'><?php echo $errors['family_name']; ?></p>
+                <?php endif; ?>
+            </div>
 
-      <div>
-        <label>名前(名)　　</label>
-        <input type="text" class="text" size="35" name="last_name" value="<?php echo (!empty($_SESSION['last_name'])) ? $_SESSION['last_name'] : ''; ?>">
+            <div>
+                <label>名前(名)　　</label>
+                <input type="text" class="text" size="35" name="last_name"
+                    value="<?php echo (!empty($_SESSION['last_name'])) ? $_SESSION['last_name'] : ''; ?>">
 
-        <?php if (!empty($errors['last_name'])) : ?>
-          <p class='error-message'><?php echo $errors['last_name']; ?></p>
-        <?php endif; ?>
-      </div>
+                <?php if (!empty($errors['last_name'])) : ?>
+                <p class='error-message'><?php echo $errors['last_name']; ?></p>
+                <?php endif; ?>
+            </div>
 
-      <div>
-        <label>メールアドレス　　</label>
-        <input type="text" class="text" size="35" name="mail" value="<?php echo (!empty($_SESSION['mail'])) ? $_SESSION['mail'] : ''; ?>">
+            <div>
+                <label>メールアドレス　　</label>
+                <input type="text" class="text" size="35" name="mail"
+                    value="<?php echo (!empty($_SESSION['mail'])) ? $_SESSION['mail'] : ''; ?>">
 
-        <?php if (!empty($errors['mail'])) : ?>
-          <p class='error-message'><?php echo $errors['mail']; ?></p>
-        <?php endif; ?>
-      </div>
+                <?php if (!empty($errors['mail'])) : ?>
+                <p class='error-message'><?php echo $errors['mail']; ?></p>
+                <?php endif; ?>
+            </div>
 
-      <div>
-        <label>パスワード　　</label>
-        <input type="text" class="text" size="35" name="password" value="<?php echo (!empty($_SESSION['password'])) ? $_SESSION['password'] : ''; ?>">
+            <div>
+                <label>パスワード　　</label>
+                <input type="text" class="text" size="35" name="password"
+                    value="<?php echo (!empty($_SESSION['password'])) ? $_SESSION['password'] : ''; ?>">
 
-        <?php if (!empty($errors['password'])) : ?>
-          <p class='error-message'><?php echo $errors['password']; ?></p>
-        <?php endif; ?>
-      </div>
+                <?php if (!empty($errors['password'])) : ?>
+                <p class='error-message'><?php echo $errors['password']; ?></p>
+                <?php endif; ?>
+            </div>
 
-      <div>
-        <label class="gender-label">性別</label>
-        <div class="gender-input">
-          <span for="male">男</span>
-          <input type="radio" id="male" name="gender" checked="checked" value="0" <?php echo (!empty($_SESSION['gender']) && $_SESSION['gender'] === '0') ? 'checked' : ''; ?>>
-        </div>
-        <div class="gender-input">
-          <span for="female">女</span>
-          <input type="radio" id="female" name="gender" value="1" <?php echo (!empty($_SESSION['gender']) && $_SESSION['gender'] === '1') ? 'checked' : ''; ?>>
+            <div>
+                <label class="gender-label">性別</label>
+                <div class="gender-input">
+                    <span for="male">男</span>
+                    <input type="radio" id="male" name="gender" checked="checked" value="0"
+                        <?php echo (!empty($_SESSION['gender']) && $_SESSION['gender'] === '0') ? 'checked' : ''; ?>>
+                </div>
+                <div class="gender-input">
+                    <span for="female">女</span>
+                    <input type="radio" id="female" name="gender" value="1"
+                        <?php echo (!empty($_SESSION['gender']) && $_SESSION['gender'] === '1') ? 'checked' : ''; ?>>
 
-        </div>
-      </div>
+                </div>
+            </div>
 
 
-      <div>
-        <label>学年(M1は5年・M2は6年を選択)　</label>
-        <select class="text" name="grade">
-          <option value="" <?php echo (empty($_SESSION['grade']) || $_SESSION['grade'] === '') ? 'selected' : ''; ?>>
-          </option>
-          <?php
+            <div>
+                <label>学年(M1は5年・M2は6年を選択)　</label>
+                <select class="text" name="grade">
+                    <option value=""
+                        <?php echo (empty($_SESSION['grade']) || $_SESSION['grade'] === '') ? 'selected' : ''; ?>>
+                    </option>
+                    <?php
           $grades = array(
             '1', '2', '3', '4', '5', '6'
           );
@@ -198,33 +222,35 @@ if ($login === 1) {
             echo '>' . $grade . "年" . '</option>';
           }
           ?>
-        </select>
+                </select>
 
-        <?php if (!empty($errors['grade'])) : ?>
-          <p class='error-message'><?php echo $errors['grade']; ?></p>
-        <?php endif; ?>
-      </div>
+                <?php if (!empty($errors['grade'])) : ?>
+                <p class='error-message'><?php echo $errors['grade']; ?></p>
+                <?php endif; ?>
+            </div>
 
-      <div>
-        <label>アカウント権限　　</label>
-        <select class="text" name="authority">
-          <option selected value="0" <?php echo (!empty($_SESSION['authority']) && $_SESSION['authority'] === '0') ? 'selected' : ''; ?>>
-            一般</option>
-          <option value="1" <?php echo (!empty($_SESSION['authority']) && $_SESSION['authority'] === '1') ? 'selected' : ''; ?>>
-            管理者</option>
-        </select>
-      </div>
+            <div>
+                <label>アカウント権限　　</label>
+                <select class="text" name="authority">
+                    <option selected value="0"
+                        <?php echo (!empty($_SESSION['authority']) && $_SESSION['authority'] === '0') ? 'selected' : ''; ?>>
+                        一般</option>
+                    <option value="1"
+                        <?php echo (!empty($_SESSION['authority']) && $_SESSION['authority'] === '1') ? 'selected' : ''; ?>>
+                        管理者</option>
+                </select>
+            </div>
 
-      <div>
-        <input type="submit" class="submit" value="確認する">
-      </div>
+            <div>
+                <input type="submit" class="submit" value="確認する">
+            </div>
 
-    </form>
-  </main>
+        </form>
+    </main>
 
-  <footer>
-    <p><small>&copy; 2024 volleyball</p>
-  </footer>
+    <footer>
+        <p><small>&copy; 2024 volleyball</p>
+    </footer>
 
 </body>
 

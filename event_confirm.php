@@ -15,11 +15,28 @@ $date = isset($_SESSION['date']) ? $_SESSION['date'] : '';
     <meta charset="utf-8">
     <title>イベント登録確認画面</title>
     <link rel="stylesheet" type="text/css" href="./css/style.event.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('.menu-icon').click(function() {
+            $(this).toggleClass('open');
+            $('.menu').toggleClass('open');
+        });
+    });
+    </script>
 </head>
 
 <body>
     <header>
         <a href="index.php?clear_session=true"><img src="./images/logo.jpeg" alt="logo-mark"></a>
+        <div class="menu-icon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
         <ul class="menu">
             <li><a href="index.php?clear_session=true">イベント一覧</a></li>
             <?php if ($login === 1) :  //幹事が操作できる  
