@@ -173,6 +173,8 @@ $stmt = $pdo->query("select * from events where delete_flag = 0 order by date de
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script src="https://kit.fontawesome.com/565bab0432.js" crossorigin="anonymous"></script>
+  <!--fontawesome を読み込むため -->
 
   <script>
     $(document).ready(function() {
@@ -187,6 +189,13 @@ $stmt = $pdo->query("select * from events where delete_flag = 0 order by date de
       $('.menu-icon').click(function() {
         $(this).toggleClass('open');
         $('.menu').toggleClass('open');
+      });
+    });
+
+    $(function() {
+      $(".faq h3").on("click", function() {
+        $(this).next().slideToggle();
+        $(this).toggleClass("open");
       });
     });
   </script>
@@ -219,7 +228,7 @@ $stmt = $pdo->query("select * from events where delete_flag = 0 order by date de
         <div><img src="./images/main-view4.jpg"></div>
       </div>
 
-      <h2>参加できるイベント</h2>
+      <h2><i class="fa-regular fa-user"></i>参加できるイベント</h2>
       <p class="event setsumei">イベント一覧</p>
 
       <table>
@@ -278,6 +287,18 @@ $stmt = $pdo->query("select * from events where delete_flag = 0 order by date de
           ?>
         </tbody>
       </table>
+
+      <div class="faq">
+        <h2 class="title"><i class="fa-regular fa-question"></i>よくある質問</h2>
+        <li>
+          <h3>登録したいときはどうしたらいいですか？</h3>
+          <div class="detail">A. 管理者権限を持っている人に伝えて「自分を登録してください。」と言ってください。</div>
+        </li>
+        <li>
+          <h3>管理者権限はどうやって付与できますか？</h3>
+          <div class="detail">A. 「参加者登録」の際に「管理者権限」のプルダウンを選んでください。</div>
+        </li>
+      </div>
 
     </div>
   </main>

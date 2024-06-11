@@ -191,6 +191,15 @@ header {
     /* 画像を領域いっぱいに表示し、アスペクト比を保持する */
 }
 
+/* ロゴ画像 */
+.fa-user::before {
+    padding-right: 10px;
+}
+
+.fa-question::before {
+    padding-right: 10px;
+}
+
 /* ハンバーガーメニュー　*/
 .menu-icon {
     display: none;
@@ -264,4 +273,60 @@ header {
     .menu {
         display: block;
     }
+}
+
+/* よくある質問コーナー */
+.faq li {
+    padding-top: 20px;
+    background-color: aliceblue;
+    list-style: none;
+}
+
+.faq h3 {
+    position: relative;
+    font-size: 25px;
+    padding: 5px 5px;
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+
+.faq h3.open::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 0;
+    border-top: solid 2px #333;
+    border-right: solid 2px #333;
+    transform: rotate(135deg);
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    margin: auto;
+}
+
+.faq h3::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 0;
+    border-top: solid 2px #333;
+    border-right: solid 2px #333;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    bottom: 0;
+    margin: auto;
+}
+
+.faq h3:hover {
+    cursor: pointer;
+    color: #ffc107;
+}
+
+.faq .detail {
+    display: none;
+    padding-top: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
